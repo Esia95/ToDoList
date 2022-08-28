@@ -8,15 +8,16 @@ export default class AddTaskModal extends Component {
   @tracked newTask;
 
   @action
-  onDescriptionChange(event) {
-    this.newTask = event.target.value;
+  onPropertyChange({ target: { value } }) {
+    this.newTask = value;
   }
 
   @action
   async onSave() {
     const task = { description: this.newTask };
-    await this.store.createRecord('task', task);
-    this.args.tasks.save();
+    const newtasks = await this.store.createRecord('task', task);
+    await newtasks.save();
+    this.args.tasks.update();
     this.clearFields();
   }
 

@@ -1,5 +1,22 @@
 {{page-title 'Index'}}
 <h1>Hello in to do list</h1>
+
+<button
+  type='button'
+  class='btn btn-info'
+  {{on 'click' this.showAll}}
+>All</button>
+<button
+  type='button'
+  class='btn btn-primary'
+  {{on 'click' this.showActive}}
+>Active</button>
+<button
+  type='button'
+  class='btn btn-success'
+  {{on 'click' this.showCompleted}}
+>Completed</button>
+
 <AddTask @tasks={{this.model}} />
 <List @tasks={{this.model}} />
 
