@@ -1,0 +1,17 @@
+<div class='input-group mb-3'>
+  <input
+    type='text'
+    class='form-control'
+    placeholder='To do'
+    aria-label='To do'
+    aria-describedby='button-addon2'
+    value={{this.newTask}}
+    {{on 'input' this.onDescriptionChange}}
+  />
+  <button
+    class='btn btn-outline-secondary'
+    type='button'
+    id='button-addon2'
+    {{on 'click' (fn this.onSave @task.description)}}
+  >Add</button>
+</div>

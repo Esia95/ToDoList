@@ -1,0 +1,83 @@
+<ModalDialog @translucentOverlay={{true}} @onClickOverlay={{this.onClose}}>
+  <div class='container'>
+    <thead>
+      <tr>
+        <th scope='col'>Id</th>
+        <th scope='col'>Description</th>
+        <th scope='col'>Date</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          <label for='id' class='col-sm-2 col-form-label'>
+
+          </label>
+          <div class='col-sm-10'>
+            <input
+              type='text'
+              class='form-control'
+              id=''
+              placeholder='id'
+              value={{@task.id}}
+              disabled
+            />
+          </div>
+        </td>
+
+        <td>
+          <label for='description' class='col-sm-2 col-form-label'>
+
+          </label>
+          <div class='col-sm-10'>
+            <input
+              type='text'
+              class='form-control'
+              id='description'
+              placeholder='description'
+              value={{@task.description}}
+              {{on 'input' (fn this.onPropertyChange 'description')}}
+            />
+          </div>
+        </td>
+
+        <td>
+          <label for='isDone' class='col-sm-2 col-form-label'>
+
+          </label>
+          <div class='col-sm-10'>
+            <input
+              type='text'
+              class='form-control'
+              id='date'
+              placeholder='data'
+              value={{moment-format @task.createdDate 'DD-MM-YYYY'}}
+              disabled
+            />
+          </div>
+        </td>
+      </tr>
+    </tbody>
+
+    <div class='d-flex'>
+      <button
+        type='submit'
+        class='btn btn-primary w-50 me-1'
+        disabled={{this.shouldDisabledButton}}
+        {{on 'click' this.onSave}}
+      >
+        Save
+      </button>
+
+      <button
+        type='button'
+        class='btn btn-danger w-50 ms-1'
+        {{on 'click' this.onClose}}
+      >
+        Cancel
+      </button>
+    </div>
+
+  </div>
+</ModalDialog>

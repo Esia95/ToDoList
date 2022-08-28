@@ -1,10 +1,6 @@
 {{page-title 'Index'}}
 <h1>Hello in to do list</h1>
-
-<ul>
-  {{#each @model as |task|}}
-    <li>{{task.description}}</li>
-  {{/each}}
-</ul>
+<AddTask @tasks={{this.model}} />
+<List @tasks={{this.model}} />
 
 {{outlet}}
