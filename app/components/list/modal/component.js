@@ -22,6 +22,7 @@ export default class ListModal extends Component {
 
   @action
   onClose() {
+    this.args.task.rollbackAttributes();
     this.args.onClose();
   }
 }

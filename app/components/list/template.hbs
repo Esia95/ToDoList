@@ -1,64 +1,59 @@
-<table class='table table-striped container-fluid'>
-  <thead>
-    <tr>
-      <th scope='col'>Id</th>
-      <th scope='col'>Description</th>
-      <th scope='col'>Date</th>
-      <th scope='col'>Is Done?</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each @tasks as |task|}}
-      <tr>
-        <th scope='row'>{{task.id}}</th>
-        <td>{{task.description}}</td>
-        <td>{{moment-format task.createdAt 'DD/MM/YYYY'}}</td>
-        <td>
-          <div class='form-check'>
-            {{#if task.isDone}}
-              <input
-                id='flexCheckDefault'
-                class='form-check-input'
-                type='checkbox'
-                value=''
-                checked={{task.isDone}}
-                {{on 'click' (fn this.onIsDone task)}}
-                disabled
-              />
-            {{else}}
-              <input
-                id='flexCheckDefault'
-                class='form-check-input'
-                type='checkbox'
-                value=''
-                checked={{task.isDone}}
-                {{on 'click' (fn this.onIsDone task)}}
-              />
-            {{/if}}
-          </div>
-        </td>
-        <td>
-          <button
-            class='btn text-bg-dark'
-            type='button'
-            {{on 'click' (fn this.onShowModal task)}}
-          >
-            Edit
-          </button>
-        </td>
-        <td>
-          <button
-            class='btn text-bg-dark'
-            type='button'
-            {{on 'click' (fn this.onDeleted task)}}
-          >
-            Delete
-          </button>
-        </td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+{{#each @tasks as |task|}}
+  <div id='result'>
+    <p class='tasks'>
+      <span>
+        {{#if task.isDone}}
+          <input
+            id='flexCheckDefault'
+            class='form-check-input'
+            type='checkbox'
+            value=''
+            checked={{task.isDone}}
+            {{on 'click' (fn this.onIsDone task)}}
+            disabled
+          />
+        {{else}}
+          <input
+            id='flexCheckDefault'
+            class='form-check-input'
+            type='checkbox'
+            value=''
+            checked={{task.isDone}}
+            {{on 'click' (fn this.onIsDone task)}}
+          />
+        {{/if}}
+      </span>
+
+      {{#if task.isDone}}
+        <span class='text'>
+          {{task.description}}
+          -
+          {{moment-format task.date 'DD/MM'}}
+        </span>
+      {{else}}
+        <span>
+          {{task.description}}
+          -
+          {{moment-format task.date 'DD/MM'}}
+        </span>
+      {{/if}}
+
+      <span class='options'>
+        <FaIcon
+          @icon='pen'
+          type='button'
+          {{on 'click' (fn this.onShowModal task)}}
+        />
+        <FaIcon
+          @icon='trash'
+          type='button'
+          {{on 'click' (fn this.onDeleted task)}}
+        />
+      </span>
+
+    </p>
+  </div>
+{{/each}}
 
 {{#if this.isShowModal}}
   <List::Modal

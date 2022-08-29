@@ -1,23 +1,42 @@
 {{page-title 'Index'}}
-<h1>Hello in to do list</h1>
 
-<button
-  type='button'
-  class='btn btn-info'
-  {{on 'click' this.showAll}}
->All</button>
-<button
-  type='button'
-  class='btn btn-primary'
-  {{on 'click' this.showActive}}
->Active</button>
-<button
-  type='button'
-  class='btn btn-success'
-  {{on 'click' this.showCompleted}}
->Completed</button>
+<div class='container'>
+  <div class='flex_c'>
+    <h1>ToDo List <FaIcon @icon='list-check' /></h1>
 
-<AddTask @tasks={{this.model}} />
-<List @tasks={{this.model}} />
+    <AddTask @tasks={{this.model}} />
+
+    <div
+      class='btn-group-sm'
+      role='group'
+      aria-label='Basic mixed styles example'
+    >
+
+      <button
+        type='button'
+        class='btn btn-primary'
+        {{on 'click' this.showAll}}
+      >All
+      </button>
+
+      <button
+        type='button'
+        class='btn btn-warning'
+        {{on 'click' this.showActive}}
+      >Active
+      </button>
+
+      <button
+        type='button'
+        class='btn btn-success'
+        {{on 'click' this.showCompleted}}
+      >Completed
+      </button>
+    </div>
+
+    <List @tasks={{this.model}} />
+
+  </div>
+</div>
 
 {{outlet}}

@@ -1,17 +1,14 @@
-<div class='input-group mb-3'>
-  <input
-    type='text'
-    class='form-control'
-    placeholder='To do'
-    aria-label='To do'
-    aria-describedby='button-addon2'
-    value={{this.newTask}}
-    {{on 'input' this.onPropertyChange}}
-  />
-  <button
-    class='btn btn-outline-secondary'
-    type='button'
-    id='button-addon2'
-    {{on 'click' (fn this.onSave @task.description)}}
-  >Add</button>
-</div>
+<input
+  id='input'
+  type='text'
+  placeholder='ENTER YOUR TASK'
+  value={{this.newTask}}
+  {{on 'input' this.onPropertyChange}}
+/>
+<button
+  id='submit'
+  type='button'
+  {{on 'click' (fn this.onSave @task.description)}}
+>
+  ADD TASK
+</button>
