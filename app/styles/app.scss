@@ -4,17 +4,142 @@
 @import "ember-modal-dialog/ember-modal-appearance";
 
 
-body {
-  background-color: rgb(183, 184, 185);
-  min-width: fit-content;
-  padding: 20px;
-}
 h1 {
   text-align: center;
+  padding: 30px;
 }
 
-#button-addon2 {
-  background-color: #20b720;
-  color: black;
+.text {
+  text-decoration: line-through;
 }
 
+.ember-modal-dialog {
+  background-color: #b29dcf;
+}
+
+#input-modal {
+  margin-bottom: 10px;
+}
+
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', 'Baloo Bhaijaan';
+}
+body {
+  background: linear-gradient(43deg, rgba(126,113,222,1) 0%, rgba(124,60,212,1) 47%, rgba(104,6,240,1) 100%);
+}
+
+
+.head {
+  color: white;
+  margin: 1em auto;
+
+}
+.container {
+  display: flex;
+  justify-content: center
+}
+.flex_c {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  position: relative
+}
+#submit {
+  margin: .3em 0;
+  border: none;
+  background: rgb(14 13 24 / 50%);
+  display: block;
+  width: 100%;
+  padding: 0.5em 1em;
+  color: #d1d1d1;
+  font: bold 15px;border-radius: 3px
+}
+
+input[type="text"] {
+  background: rgb(255 255 255 / 70%);
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 3px;
+  outline: none;
+}
+
+.tasks {
+  background: rgba(255,255,255,0.3);
+  padding: 0.5em;
+  border-radius: 3px;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.options{
+  position: absolute;right: 1em;
+}
+
+.btn-group-sm {
+  padding-top: 15px;
+}
+
+$speed: 0.5s;
+
+.btn-flip{
+  opacity: 1;
+  outline: 0;
+  color: #fff;
+  line-height: 40px;
+  position: relative;
+  text-align: center;
+  letter-spacing: 1px;
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Open Sans';
+  text-transform: uppercase;
+
+  &:hover{
+
+    &:after{
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
+    }
+
+    &:before{
+      opacity: 0;
+      transform: translateY(50%) rotateX(90deg);
+    }
+  }
+
+  &:after{
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    color: #323237;
+    display: block;
+    transition: $speed;
+    position: absolute;
+    background: #adadaf;
+    content: attr(data-back);
+    transform: translateY(-50%) rotateX(90deg);
+  }
+
+  &:before{
+    top: 0;
+    left: 0;
+    opacity: 1;
+    color: #adadaf;
+    display: block;
+    padding: 0 30px;
+    line-height: 40px;
+    transition: $speed;
+    position: relative;
+    background: #323237;
+    content: attr(data-front);
+    transform: translateY(0) rotateX(0);
+  }
+}
